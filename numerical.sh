@@ -32,10 +32,10 @@ printf "==>"
 
 #DoMath(){
 
-clear
 	
 if [ $o = 1 ]
 		then
+		clear
 		printf "Using Simpson's Method..\n"
 		sleep 2
 		
@@ -51,12 +51,27 @@ if [ $o = 1 ]
 		
 		printf "\nParameters:"
 		printf "a=$a b=$b n=$n F(x)=$fox\n"
+		sleep 1
 		
+		# Find dx
+		(( c = $b-$a ))
+		(( dx=$c/$n ))
+#		printf "b-a=$c\n"
+		printf "dx=$c/$n\n"
 		
+		# dnom
+		(( d = 3*$n ))
+		printf "($c/$d)" #arg1
+		sleep 1
+		
+		(( ssum = sum $fox ))
+		
+		printf "($ssum)" #arg2
 		
 		
 	elif [ $o = 2 ]
 		then
+		clear
 		printf "Using Trapezoidal Method..\n"
 		sleep 2
 				printf "\na="
@@ -72,10 +87,23 @@ if [ $o = 1 ]
 		printf "\nParameters:"
 		printf "a=$a b=$b n=$n F(x)=$fox\n"
 		
+		# Find dx
+		(( c = $b-$a ))
+		(( dx=$c/$n ))
+		printf "dx=$c/$n\n"
+		
+		# dnom
+		(( d = 2*$n ))
+		printf "($c/$d)" #arg1
+		sleep 1
+		
+		(( tsum = $fox ))
+		printf "($tsum)" #arg2
+		
 		
 		
 	else  
-		printf "Invalid Option! Exiting...\n"
+		printf "\e[1;91mInvalid Option! [ $o ] Exiting...\n"
 		exit 0
 fi
 
